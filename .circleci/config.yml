@@ -13,4 +13,5 @@ jobs:
                 name: update-npm
                 command: |
                   sudo npm install -g @angular/cli@8.3.25 >> /dev/null
+                  ng analytics off
                   ng --version
