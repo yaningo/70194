@@ -14,6 +14,6 @@ jobs:
                 command: |
 #                  export NG_CLI_ANALYTICS=false
 #                  echo $NG_CLI_ANALYTICS
-                  sudo npm install -g @angular/cli@8.3.25 >> /dev/null
+                  sudo npm install -g @angular/cli@8.3.25
                   ng analytics off
                   ng --version
