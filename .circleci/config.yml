@@ -1,0 +1,19 @@
+version: 2
+
+jobs:
+    # The build job
+    build:
+        working_directory: ~/project
+        docker:
+            - image: circleci/node:10.16.3
+        steps:
+            # Checkout the code from the branch into the working_directory
+            - checkout
+            - run:
+                name: update-npm
+                command: |
+                  echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
+                  echo $NG_CLI_ANALYTICS
+                  sudo npm install -g @angular/cli@8.3.25
+                  ng analytics off
+                  ng --version
