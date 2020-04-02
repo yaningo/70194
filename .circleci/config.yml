@@ -12,7 +12,7 @@ jobs:
             - run:
                 name: update-npm
                 command: |
-                  echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
+                  export NG_CLI_ANALYTICS
                   echo $NG_CLI_ANALYTICS
                   sudo npm install -g @angular/cli@8.3.25
                   ng analytics off
