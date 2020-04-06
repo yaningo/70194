@@ -1,19 +1,43 @@
-version: 2
+version: 2.1
+
+parameters:
+  foo:
+    type: boolean
+    default: true
+  bar:
+    type: boolean
+    default: false
 
 jobs:
-    # The build job
-    build:
-        working_directory: ~/project
-        docker:
-            - image: circleci/node:10.16.3
-        steps:
-            # Checkout the code from the branch into the working_directory
-            - checkout
-            - run:
-                name: update-npm
-                command: |
-                  echo 'export NG_CLI_ANALYTICS=false' >> $BASH_ENV
-                  echo $NG_CLI_ANALYTICS
-                  sudo npm install -g @angular/cli@8.3.25
-                  ng analytics off
-                  ng --version
+  codecoverage:
+    docker:
+      - image: circleci/node
+    steps:
+      - run:
+          command: |
+                   echo codecoverage
+                   echo ${NG_CLI_ANALYTICS}
+                   echo "No secrets"
+  binary-size:
+    docker:
+      - image: circleci/node
+    steps:
+      - run:
+          command: |
+                   echo binary-size
+workflows:
+  version: 2
+  android-navigation:
+    when: << pipeline.parameters.bar >>
+    jobs:
+      - codecoverage
+      - binary-size:
+          requires: 
+            - codecoverage
+  android-maps:
+    when: << pipeline.parameters.foo >>
+    jobs:
+      - binary-size    
+      - codecoverage:
+          requires:
+            - binary-size
