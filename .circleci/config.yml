@@ -2,7 +2,6 @@ version: 2.1
 jobs:
   runningdocker:
     docker:
-      - image: circleci/node
     machine: true
     steps:
       - checkout
