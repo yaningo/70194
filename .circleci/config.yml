@@ -33,8 +33,7 @@ workflows:
 
   sync:
     jobs:
-      - deuxieme:
-          context: chef-org
+      - deuxieme
       
   thirdly:
     jobs:
