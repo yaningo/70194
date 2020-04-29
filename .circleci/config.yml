@@ -1,23 +1,41 @@
-version: 2.1
+version: 2
+
 jobs:
-  runningdocker:
+  premier:
     docker:
-    machine: true
+      - image: circleci/node
     steps:
-      - checkout
-      # build the application image
-      - run: npm run docker:build
-      # running the image
-      - run: npm run docker:run
-  runningcypress:
+      - run:
+          command: |
+                   echo job1
+                   
+  deuxieme:
     docker:
-      - image: cypress/browsers
+      - image: circleci/node
     steps:
-      - checkout
-      - run: npm run cypress:run
+      - run:
+          command: |
+                   echo job2
+ 
+  troisieme:
+    docker:
+      - image: circleci/node
+    steps:
+      - run:
+          command: |
+                   echo job3
+                                     
 workflows:
-  version: 2.1
-  Portfolio-Tests:
+  version: 2
+  daily:
     jobs:
-      - runningdocker
-      - runningcypress
+      - premier
+
+  sync:
+    jobs:
+      - deuxieme
+      
+  thirdly:
+    jobs:
+      - troisieme:
+          context: chef-org
