@@ -33,9 +33,9 @@ workflows:
 
   sync:
     jobs:
-      - deuxieme
+      - deuxieme:
+          context: chef-org
       
   thirdly:
     jobs:
-      - troisieme:
-          context: chef-org
+      - troisieme
