@@ -38,4 +38,5 @@ workflows:
       
   thirdly:
     jobs:
-      - troisieme
+      - troisieme:
+          context: chef-org
