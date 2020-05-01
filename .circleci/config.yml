@@ -27,10 +27,11 @@ jobs:
                                      
 workflows:
   version: 2
+  
   daily:
     triggers:
       - schedule:
-          cron: "04 11 * * *"
+          cron: "23 11 * * *"
           filters:
               branches:
                 only:
@@ -41,7 +42,7 @@ workflows:
   sync:
   triggers:
       - schedule:
-          cron: "20 11 * * *"
+          cron: "38 11 * * *"
           filters:
               branches:
                 only:
@@ -52,7 +53,7 @@ workflows:
   thirdly:
   triggers:
       - schedule:
-          cron: "40 11 * * *"
+          cron: "50 11 * * *"
           filters:
               branches:
                 only:
