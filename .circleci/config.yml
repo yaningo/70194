@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
   premier:
@@ -26,17 +26,36 @@ jobs:
                    echo jobnum3
                                      
 workflows:
-  version: 2
+  version: 2.1
   daily:
+    triggers:
+      - schedule:
+          cron: "04 11 * * *"
+          filters:
+              branches:
+                only:
+                  - master
     jobs:
       - premier
 
   sync:
+  triggers:
+      - schedule:
+          cron: "20 11 * * *"
+          filters:
+              branches:
+                only:
+                  - master
     jobs:
-      - deuxieme:
-          context: chef-org
+      - deuxieme
       
   thirdly:
+  triggers:
+      - schedule:
+          cron: "40 11 * * *"
+          filters:
+              branches:
+                only:
+                  - master
     jobs:
-      - troisieme:
-          context: chef-org
+      - troisieme
