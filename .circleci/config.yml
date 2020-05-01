@@ -31,7 +31,7 @@ workflows:
   daily:
     triggers:
       - schedule:
-          cron: "35 13 * * *"
+          cron: "07 14 * * *"
           filters:
               branches:
                 only:
@@ -42,7 +42,7 @@ workflows:
   sync:
     triggers:
       - schedule:
-          cron: "45 13 * * *"
+          cron: "15 14 * * *"
           filters:
               branches:
                 only:
@@ -53,7 +53,7 @@ workflows:
   thirdly:
     triggers:
       - schedule:
-          cron: "50 14 * * *"
+          cron: "20 14 * * *"
           filters:
               branches:
                 only:
