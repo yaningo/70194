@@ -26,7 +26,8 @@ jobs:
                    echo jobnum3
                                      
 workflows:
-
+  version: 2
+  
   daily:
     triggers:
       - schedule:
@@ -49,7 +50,7 @@ workflows:
     jobs:
       - deuxieme
       
-  daily:
+  thirdly:
     triggers:
       - schedule:
           cron: "45 11 * * *"
