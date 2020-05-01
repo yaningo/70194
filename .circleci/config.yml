@@ -27,11 +27,14 @@ jobs:
                                      
 workflows:
   version: 2
-  
+
+  #################################################################
+  #### DevOps
+  #################################################################
   daily:
     triggers:
       - schedule:
-          cron: "23 11 * * *"
+          cron: "30 11 * * *"
           filters:
               branches:
                 only:
@@ -40,9 +43,9 @@ workflows:
       - premier
 
   sync:
-  triggers:
+    triggers:
       - schedule:
-          cron: "38 11 * * *"
+          cron: "35 11 * * *"
           filters:
               branches:
                 only:
@@ -50,10 +53,10 @@ workflows:
     jobs:
       - deuxieme
       
-  thirdly:
-  triggers:
+  daily:
+    triggers:
       - schedule:
-          cron: "50 11 * * *"
+          cron: "40 11 * * *"
           filters:
               branches:
                 only:
