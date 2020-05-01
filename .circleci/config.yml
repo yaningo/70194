@@ -26,12 +26,11 @@ jobs:
                    echo jobnum3
                                      
 workflows:
-version: 2
 
   daily:
     triggers:
       - schedule:
-          cron: "30 11 * * *"
+          cron: "35 11 * * *"
           filters:
               branches:
                 only:
@@ -42,7 +41,7 @@ version: 2
   sync:
     triggers:
       - schedule:
-          cron: "35 11 * * *"
+          cron: "40 11 * * *"
           filters:
               branches:
                 only:
@@ -53,7 +52,7 @@ version: 2
   daily:
     triggers:
       - schedule:
-          cron: "40 11 * * *"
+          cron: "45 11 * * *"
           filters:
               branches:
                 only:
