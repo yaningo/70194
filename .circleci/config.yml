@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
     # The build job
@@ -15,3 +15,9 @@ jobs:
                   sudo npm install -g @angular/cli@8.3.25 >> /dev/null
                   ng analytics off
                   ng --version
+                  
+workflows:
+  version: 2
+  pricehubble:
+    jobs:
+      - build
