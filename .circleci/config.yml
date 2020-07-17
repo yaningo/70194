@@ -29,24 +29,10 @@ workflows:
   version: 2
   
   daily:
-    triggers:
-      - schedule:
-          cron: "45 14 * * *"
-          filters:
-              branches:
-                only:
-                  - master
     jobs:
       - premier
 
   sync:
-    triggers:
-      - schedule:
-          cron: "50 14 * * *"
-          filters:
-              branches:
-                only:
-                  - master
     jobs:
       - deuxieme
       
