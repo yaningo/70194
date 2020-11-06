@@ -35,7 +35,7 @@ workflows:
           filters:
               branches:
                 only:
-                  - master
+                  - cheekycheck
     jobs:
       - premier
 
@@ -46,7 +46,7 @@ workflows:
           filters:
               branches:
                 only:
-                  - master
+                  - cheekycheck
     jobs:
       - deuxieme
       
@@ -57,6 +57,6 @@ workflows:
           filters:
               branches:
                 only:
-                  - master
+                  - cheekycheck
     jobs:
       - troisieme
