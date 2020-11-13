@@ -51,12 +51,5 @@ workflows:
       - deuxieme
       
   thirdly:
-    triggers:
-      - schedule:
-          cron: "55 14 * * *"
-          filters:
-              branches:
-                only:
-                  - master
     jobs:
       - troisieme
