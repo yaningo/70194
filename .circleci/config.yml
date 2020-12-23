@@ -1,5 +1,10 @@
-version: 2
+version: 2.1
 
+parameters:
+  run_pull_request:
+    default: true
+    type: boolean
+    
 jobs:
   premier:
     docker:
@@ -29,9 +34,17 @@ workflows:
   version: 2
   
   daily:
+    when: <<pipeline.parameters.run_pull_request>>
     jobs:
       - premier
-
+    triggers:
+      - schedule:
+          cron: "41 15 * * *"
+          filters:
+              branches:
+                only:
+                  - master
+                  
   sync:
     triggers:
       - schedule:
