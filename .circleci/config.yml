@@ -39,11 +39,11 @@ workflows:
       - premier
     triggers:
       - schedule:
-          cron: "44 15 * * *"
+          cron: "52 15 * * *"
           filters:
               branches:
                 only:
-                  - master
+                  - cheekycheck
                   
   sync:
     triggers:
