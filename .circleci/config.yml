@@ -34,12 +34,12 @@ workflows:
   version: 2
   
   daily:
-    when: <pipeline.parameters.run_pull_request>>
+    when: <<pipeline.parameters.run_pull_request>>
     jobs:
       - premier
     triggers:
       - schedule:
-          cron: "52 15 * * *"
+          cron: "54 15 * * *"
           filters:
               branches:
                 only:
