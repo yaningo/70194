@@ -2,7 +2,7 @@ version: 2.1
 
 parameters:
   run_pull_request:
-    default: false
+    default: true
     type: boolean
     
 only_on_cheekycheck: &only_on_cheekycheck
@@ -44,7 +44,7 @@ workflows:
       - premier
     triggers:
       - schedule:
-          cron: "00 16 * * *"
+          cron: "08 16 * * *"
           <<: *only_on_cheekycheck
          # filters:
          #     branches:
