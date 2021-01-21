@@ -2,7 +2,7 @@ version: 2.1
 
 parameters:
   run_pull_request:
-    default: true
+    default: false
     type: boolean
     
 jobs:
@@ -34,7 +34,7 @@ workflows:
   version: 2
   
   daily:
-    when: <<pipeline.parameters.run_pull_request>>
+    unless: <<pipeline.parameters.run_pull_request>>
     jobs:
       - premier
     triggers:
