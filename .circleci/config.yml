@@ -63,6 +63,6 @@ workflows:
           filters:
               branches:
                 only:
-                  - cheekycheck
+                  - pricehubble
     jobs:
       - troisieme
