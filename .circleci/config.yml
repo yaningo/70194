@@ -45,7 +45,7 @@ workflows:
     triggers:
       - schedule:
           cron: "56 15 * * *"
-          <<: *only_on_main
+          <<: *only_on_cheekycheck
          # filters:
          #     branches:
          #       only:
