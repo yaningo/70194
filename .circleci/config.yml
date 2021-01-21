@@ -2,7 +2,7 @@ version: 2.1
 
 parameters:
   run_pull_request:
-    default: true
+    default: false
     type: boolean
     
 only_on_cheekycheck: &only_on_cheekycheck
@@ -40,16 +40,18 @@ workflows:
   
   daily:
     unless: <<pipeline.parameters.run_pull_request>>
-    jobs:
-      - premier
+    #jobs:
+    #  - premier
     triggers:
       - schedule:
-          cron: "08 16 * * *"
+          cron: "21 16 * * *"
           <<: *only_on_cheekycheck
          # filters:
          #     branches:
          #       only:
          #         - cheekycheck
+    jobs:
+      - premier
                 
                   
   sync:
