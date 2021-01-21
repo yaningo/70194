@@ -9,6 +9,10 @@ jobs:
           command: |
                    echo jobnum1
                    
+      - add_ssh_keys:
+          fingerprints:
+            - "07:39:a0:c9:ee:e9:59:4f:6d:1a:4e:0d:c9:af:44:ca"
+                   
   deuxieme:
     docker:
       - image: circleci/node
