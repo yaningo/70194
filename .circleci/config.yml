@@ -44,8 +44,8 @@ workflows:
       - premier
     triggers:
       - schedule:
-          cron: "58 15 * * *"
-            <<: *only_on_cheekycheck
+          cron: "00 16 * * *"
+          <<: *only_on_cheekycheck
          # filters:
          #     branches:
          #       only:
