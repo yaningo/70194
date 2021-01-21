@@ -5,6 +5,11 @@ parameters:
     default: false
     type: boolean
     
+only_on_cheekycheck: &only_on_cheekycheck
+  filters:
+    branches:
+      only: cheekycheck
+    
 jobs:
   premier:
     docker:
@@ -39,11 +44,13 @@ workflows:
       - premier
     triggers:
       - schedule:
-          cron: "51 15 * * *"
-          filters:
-              branches:
-                only:
-                  - cheekycheck
+          cron: "56 15 * * *"
+          <<: *only_on_main
+         # filters:
+         #     branches:
+         #       only:
+         #         - cheekycheck
+                
                   
   sync:
     triggers:
