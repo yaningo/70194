@@ -2,7 +2,7 @@ version: 2.1
 
 parameters:
   run_pull_request:
-    default: false
+    default: true
     type: boolean
     
 jobs:
