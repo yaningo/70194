@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 after-linter: &after-linter
   requires:
@@ -48,7 +48,6 @@ workflows:
     jobs:
       - lint:
           name: build 2.12.8
-          version: 2.12.8
           filters:
             branches:
               only: /.*/
