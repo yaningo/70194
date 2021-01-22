@@ -37,9 +37,9 @@ workflows:
       - premier:
           filters:
             branches:
-              ignore: /.*/
+              only: /.*/
             tags:
-              only: /^v[0-9].*/
+              only: /.*/
      
 
   sync:
