@@ -47,6 +47,11 @@ workflows:
   daily:
     jobs:
       - lint
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              only: /.*/
       - premier:
           <<: *after-linter
           filters:
