@@ -33,13 +33,13 @@ workflows:
   version: 2
   
   daily:
-    filters:
-      branches:
-        ignore: /.*/
-      tags:
-        only: /^v[0-9].*/
     jobs:
-      - premier
+      - premier:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9].*/
      
 
   sync:
