@@ -1,6 +1,18 @@
 version: 2
 
+after-linter: &after-linter
+  requires:
+    - lint
+
 jobs:
+  lint:
+    docker:
+      - image: circleci/node
+    steps:
+      - run:
+          command: |
+                   echo Hello
+    
   premier:
     docker:
       - image: circleci/node
@@ -34,12 +46,14 @@ workflows:
   
   daily:
     jobs:
+      -lint
       - premier:
           filters:
             branches:
               only: /.*/
             tags:
               only: /.*/
+          <<: *after-linter
      
 
   sync:
