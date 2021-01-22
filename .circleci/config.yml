@@ -46,7 +46,7 @@ workflows:
   
   daily:
     jobs:
-      - lint
+      - lint:
           filters:
             branches:
               only: /.*/
