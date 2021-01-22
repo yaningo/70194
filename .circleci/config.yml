@@ -48,12 +48,12 @@ workflows:
     jobs:
       -lint
       - premier:
+          <<: *after-linter
           filters:
             branches:
               only: /.*/
             tags:
               only: /.*/
-          <<: *after-linter
      
 
   sync:
