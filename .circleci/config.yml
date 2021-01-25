@@ -36,16 +36,11 @@ jobs:
   troisieme:
     docker:
       - image: circleci/node
-    parameters:
-      saywhat:
-        description: "To whom shall we say hello?"
-        default: "World"
-        type: string
     steps:
       - run:
           command: |
                    echo jobnum3
-                   echo "<< parameters.saywhat >>"
+                   echo $saywhat
                                      
 workflows:
   # version: 2
