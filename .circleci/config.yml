@@ -1,9 +1,5 @@
 version: 2
 
-after-linter: &after-linter
-  requires:
-    - lint
-
 jobs:
   lint:
     docker:
