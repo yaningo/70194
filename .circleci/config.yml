@@ -1,12 +1,7 @@
-version: 2
+version: 2.1
 
 jobs:
   lint:
-    parameters:
-      saywhat:
-        description: "To whom shall we say hello?"
-        default: "World"
-        type: string
     docker:
       - image: circleci/node
     steps:
@@ -38,21 +33,15 @@ jobs:
       - run:
           command: |
                    echo jobnum2
-                   echo <<parameters.saywhat>>
+                   echo << parameters.saywhat >>
  
   troisieme:
-    parameters:
-      saywhat:
-        description: "To whom shall we say hello?"
-        default: "World"
-        type: string
     docker:
       - image: circleci/node
     steps:
       - run:
           command: |
                    echo jobnum3
-                   echo $saywhat
                                      
 workflows:
   version: 2
