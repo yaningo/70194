@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 jobs:
   lint:
@@ -38,7 +38,7 @@ jobs:
       - run:
           command: |
                    echo jobnum2
-                   echo << parameters.saywhat >>
+                   echo <<parameters.saywhat>>
  
   troisieme:
     parameters:
