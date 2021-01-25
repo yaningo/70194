@@ -1,5 +1,11 @@
 version: 2.1
 
+parameters:
+      saywhat:
+        description: "To whom shall we say hello?"
+        default: "World"
+        type: string
+
 jobs:
   lint:
     docker:
@@ -22,18 +28,13 @@ jobs:
             - "07:39:a0:c9:ee:e9:59:4f:6d:1a:4e:0d:c9:af:44:ca"
                    
   deuxieme:
-    parameters:
-      saywhat:
-        description: "To whom shall we say hello?"
-        default: "World"
-        type: string
     docker:
       - image: circleci/node
     steps:
       - run:
           command: |
                    echo jobnum2
-                   echo << parameters.saywhat >>
+                   echo << pipeline.parameters.saywhat >>
  
   troisieme:
     docker:
