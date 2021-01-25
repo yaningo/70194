@@ -2,6 +2,11 @@ version: 2.1
 
 jobs:
   lint:
+    parameters:
+      saywhat:
+        description: "To whom shall we say hello?"
+        default: "World"
+        type: string
     docker:
       - image: circleci/node
     steps:
@@ -36,6 +41,11 @@ jobs:
                    echo $saywhat
  
   troisieme:
+    parameters:
+      saywhat:
+        description: "To whom shall we say hello?"
+        default: "World"
+        type: string
     docker:
       - image: circleci/node
     steps:
