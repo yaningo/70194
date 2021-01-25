@@ -43,7 +43,7 @@ jobs:
                    echo $saywhat
                                      
 workflows:
-  # version: 2
+  version: 2
   
   daily:
     jobs:
