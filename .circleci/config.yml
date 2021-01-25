@@ -44,7 +44,6 @@ workflows:
   daily:
     jobs:
       - lint:
-          name: build 2.12.8
           filters:
             branches:
               only: /.*/
