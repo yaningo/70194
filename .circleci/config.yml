@@ -57,12 +57,12 @@ workflows:
                   
   sync:
     triggers:
-      - schedule:
-          cron: "50 16 * * *"
-          filters:
-              branches:
-                only:
-                  - master
+     # - schedule:
+     #     cron: "50 16 * * *"
+     #     filters:
+     #         branches:
+     #           only:
+     #             - master
     jobs:
       - deuxieme
       
