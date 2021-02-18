@@ -67,12 +67,9 @@ workflows:
       - deuxieme
       
   thirdly:
-    triggers:
-      - schedule:
-          cron: "55 14 * * *"
-          filters:
-              branches:
-                only:
-                  - pricehubble
+    filters:
+      branches:
+        only:
+          - pricehubble
     jobs:
       - troisieme
