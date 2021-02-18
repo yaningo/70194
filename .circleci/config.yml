@@ -25,7 +25,7 @@ jobs:
                    
       - add_ssh_keys:
           fingerprints:
-            - "7b:21:30:27:40:92:6d:e9:ed:29:c7:2d:a1:d0:6f:35"
+            - '7b:21:30:27:40:92:6d:e9:ed:29:c7:2d:a1:d0:6f:35'
                    
   deuxieme:
     docker:
