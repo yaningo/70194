@@ -64,7 +64,11 @@ workflows:
      #           only:
      #             - master
     jobs:
-      - deuxieme
+      - deuxieme:
+          filters:
+            branches:
+              only:
+                - pricehubble
       
   thirdly:
     jobs:
