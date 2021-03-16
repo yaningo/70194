@@ -1,17 +1,30 @@
-version: 2
+version: 2.1
 
-jobs:
-    # The build job
-    build:
-        working_directory: ~/project
-        docker:
-            - image: circleci/node:10.16.3
-        steps:
-            # Checkout the code from the branch into the working_directory
-            - checkout
-            - run:
-                name: update-npm
-                command: |
-                  sudo npm install -g @angular/cli@8.3.25 >> /dev/null
-                  ng analytics off
-                  ng --version
+install-flutter: &install-flutter
+  - run: |
+      wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.22.6-stable.tar.xz && \
+      sudo tar xf flutter_linux_1.22.6-stable.tar.xz -C /usr/local/bin && \
+      export PATH=/usr/local/bin/flutter/bin:$PATH && \
+      rm flutter_linux_1.22.6-stable.tar.xz && \
+      sudo chown -R circleci:circleci /usr/local/bin/flutter && \
+      flutter precache --no-web --no-linux --no-windows --no-fuchsia --no-ios --no-macos
+
+jobs: # conditional steps may also be defined in `commands:`
+  test:
+    machine:
+      image: android:202102-01
+    steps:
+      - run: echo 1
+      - run: echo 2
+      - run: |
+          echo "export PATH=/usr/local/bin/flutter/bin:$PATH" >> $BASH_ENV
+          echo "export SYSTEM_IMAGES='system-images;android-29;default;x86'" >> $BASH_ENV
+      - run: echo 1
+      - run: echo "don't fail"
+      - run: echo another steps
+      - run: echo whaaaat
+
+workflows:
+  test-workflows:
+    jobs:
+      - test
