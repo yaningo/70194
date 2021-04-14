@@ -72,8 +72,4 @@ workflows:
       
   thirdly:
     jobs:
-      - troisieme:
-          filters:
-            branches:
-              only:
-                - pricehubble
+      - troisieme
