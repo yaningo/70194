@@ -5,10 +5,10 @@ parameters:
     default: false
     type: boolean
     
-only_on_cheekycheck: &only_on_cheekycheck
+only_on_cheekycheck: &only_on_master
   filters:
     branches:
-      only: cheekycheck
+      only: master
     
 jobs:
   premier:
@@ -44,8 +44,8 @@ workflows:
     #  - premier
     triggers:
       - schedule:
-          cron: "25 14 * * *"
-          <<: *only_on_cheekycheck
+          cron: "35 14 * * *"
+          <<: *only_on_master
          # filters:
          #     branches:
          #       only:
@@ -68,7 +68,7 @@ workflows:
           filters:
             branches:
               only:
-                - pricehubble
+                - master
       
   thirdly:
     jobs:
