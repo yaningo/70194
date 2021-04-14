@@ -44,7 +44,7 @@ workflows:
     #  - premier
     triggers:
       - schedule:
-          cron: "38 14 * * *"
+          cron: "42 14 * * *"
           <<: *only_on_master
          # filters:
          #     branches:
