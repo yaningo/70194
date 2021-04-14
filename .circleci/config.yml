@@ -1,20 +1,16 @@
 version: 2.1
 
 parameters:
-      saywhat:
-        description: "To whom shall we say hello?"
-        default: "World"
-        type: string
-
-jobs:
-  lint:
-    docker:
-      - image: circleci/node
-    steps:
-      - run:
-          command: |
-                   echo Hello
+  run_pull_request:
+    default: false
+    type: boolean
     
+only_on_cheekycheck: &only_on_cheekycheck
+  filters:
+    branches:
+      only: cheekycheck
+    
+jobs:
   premier:
     docker:
       - image: circleci/node
@@ -23,10 +19,6 @@ jobs:
           command: |
                    echo jobnum1
                    
-      - add_ssh_keys:
-          fingerprints:
-            - '7b:21:30:27:40:92:6d:e9:ed:29:c7:2d:a1:d0:6f:35'
-                   
   deuxieme:
     docker:
       - image: circleci/node
@@ -34,7 +26,6 @@ jobs:
       - run:
           command: |
                    echo jobnum2
-                   echo << pipeline.parameters.saywhat >>
  
   troisieme:
     docker:
@@ -48,33 +39,37 @@ workflows:
   version: 2
   
   daily:
-    jobs:
-      - lint:
-          filters:
-            branches:
-              only: /.*/
-            tags:
-              only: /.*/
-      - premier:
-          # <<: *after-linter
-          filters:
-            branches:
-              only: /.*/
-            tags:
-              only: /.*/
-     
-
-  sync:
-    jobs:
-      - deuxieme
-      
-  thirdly:
+    unless: <<pipeline.parameters.run_pull_request>>
+    #jobs:
+    #  - premier
     triggers:
       - schedule:
-          cron: "55 14 * * *"
+          cron: "25 14 * * *"
+          <<: *only_on_cheekycheck
+         # filters:
+         #     branches:
+         #       only:
+         #         - cheekycheck
+         ##### Will it re-schedule??
+    jobs:
+      - premier
+                
+                  
+  sync:
+    triggers:
+     # - schedule:
+     #     cron: "50 16 * * *"
+     #     filters:
+     #         branches:
+     #           only:
+     #             - master
+    jobs:
+      - deuxieme:
           filters:
-              branches:
-                only:
-                  - cheekycheck
+            branches:
+              only:
+                - pricehubble
+      
+  thirdly:
     jobs:
       - troisieme
