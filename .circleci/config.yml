@@ -44,7 +44,7 @@ workflows:
     #  - premier
     triggers:
       - schedule:
-          cron: "21 14 * * *"
+          cron: "25 14 * * *"
           <<: *only_on_cheekycheck
          # filters:
          #     branches:
