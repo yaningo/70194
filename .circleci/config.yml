@@ -39,13 +39,13 @@ workflows:
   version: 2
   
   daily:
-    unless: <<pipeline.parameters.run_pull_request>>
+    #unless: <<pipeline.parameters.run_pull_request>>
     #jobs:
     #  - premier
-    triggers:
-      - schedule:
+    #triggers:
+     # - schedule:
          # cron: "51 16 * * *"
-          <<: *only_on_master
+      #    <<: *only_on_master
          # filters:
          #     branches:
          #       only:
