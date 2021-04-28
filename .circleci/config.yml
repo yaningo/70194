@@ -43,7 +43,7 @@ workflows:
     #jobs:
     #  - premier
     triggers:
-      - schedule
+      - schedule:
          # cron: "51 16 * * *"
           <<: *only_on_master
          # filters:
