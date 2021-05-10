@@ -1,23 +1,36 @@
 version: 2.1
 
+executors:
+  gfortran:
+    machine:
+      image: ubuntu-2004:202104-01
+    environment:
+      OMPI_ALLOW_RUN_AS_ROOT: 1
+      OMPI_ALLOW_RUN_AS_ROOT_CONFIRM: 1  
+     
+  ifort:
+    machine:
+      image: ubuntu-1604:202104-01
+      
 jobs:
-    # The build job
-    build:
-        working_directory: ~/project
-        docker:
-            - image: circleci/node:10.16.3
-        steps:
-            # Checkout the code from the branch into the working_directory
-            - checkout
-            - run:
-                name: update-npm
-                command: |
-                  sudo npm install -g @angular/cli@8.3.25 >> /dev/null
-                  ng analytics off
-                  ng --version
-                  
+  build-MAPL:
+    parameters:
+      compiler:
+        description: Compile for this architecture
+        type: executor
+      
+    executor: << parameters.compiler >>
+    
+    steps:
+      - run:
+          name: Check Ubuntu version
+          command: lsb_release -a
+        
 workflows:
-  version: 2
-  pricehubble:
+  execmess:
     jobs:
-      - build
+      - build-MAPL:
+          name: build-MAPL-<< matrix.compiler >>
+          matrix:
+            parameters:
+              compiler: [gfortran, ifort]
