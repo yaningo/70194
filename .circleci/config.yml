@@ -25,7 +25,7 @@ jobs:
     steps:
       - run:
           name: Check Ubuntu version
-          command:|
+          command: |
             lsb_release -a
             echo "My Ubuntu is" $MY_VERSION
         
