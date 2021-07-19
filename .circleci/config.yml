@@ -13,7 +13,7 @@ parameters:
 jobs:
   premier:
     docker:
-      - image: circleci/node
+      - image: cimg/node:12.17
     steps:
       - run: |
           echo jobnum1
@@ -42,7 +42,7 @@ workflows:
 #     unless: <<pipeline.parameters.run_pull_request>>
     triggers:
      - schedule:
-         cron: "28 16 * * *"
+         cron: "22 18 * * *"
 #          <<: *only_on_master
          filters:
              branches:
