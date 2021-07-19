@@ -40,11 +40,9 @@ workflows:
   
   daily:
 #     unless: <<pipeline.parameters.run_pull_request>>
-    jobs:
-     - premier
     triggers:
      - schedule:
-         cron: "26 16 * * *"
+         cron: "28 16 * * *"
 #          <<: *only_on_master
          filters:
              branches:
