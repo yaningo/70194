@@ -5,71 +5,70 @@ parameters:
     default: false
     type: boolean
     
-only_on_cheekycheck: &only_on_master
-  filters:
-    branches:
-      only: master
+# only_on_cheekycheck: &only_on_master
+#   filters:
+#     branches:
+#       only: master
     
 jobs:
   premier:
     docker:
       - image: circleci/node
     steps:
-      - run:
-          command: |
-                   echo jobnum1
+      - run: |
+          echo jobnum1
+          whoami
                    
-  deuxieme:
-    docker:
-      - image: circleci/node
-    steps:
-      - run:
-          command: |
-                   echo jobnum2
+#   deuxieme:
+#     docker:
+#       - image: circleci/node
+#     steps:
+#       - run:
+#           command: |
+#                    echo jobnum2
  
-  troisieme:
-    docker:
-      - image: circleci/node
-    steps:
-      - run:
-          command: |
-                   echo jobnum3
+#   troisieme:
+#     docker:
+#       - image: circleci/node
+#     steps:
+#       - run:
+#           command: |
+#                    echo jobnum3
                                      
 workflows:
   version: 2
   
   daily:
-    #unless: <<pipeline.parameters.run_pull_request>>
-    #jobs:
-    #  - premier
-    #triggers:
-     # - schedule:
-         # cron: "51 16 * * *"
-      #    <<: *only_on_master
-         # filters:
-         #     branches:
-         #       only:
-         #         - cheekycheck
-         ##### Will it re-schedule??
+#     unless: <<pipeline.parameters.run_pull_request>>
+    jobs:
+     - premier
+    triggers:
+     - schedule:
+         cron: "26 16 * * *"
+#          <<: *only_on_master
+         filters:
+             branches:
+               only:
+                 - master
     jobs:
       - premier
                 
                   
-  sync:
-    triggers:
-     # - schedule:
-     #     cron: "50 16 * * *"
-     #     filters:
-     #         branches:
-     #           only:
-     #             - master
-    jobs:
-      - deuxieme:
-          filters:
-            branches:
-              only:
-                - master
+#   sync:
+#     triggers:
+#      # - schedule:
+#      #     cron: "50 16 * * *"
+#      #     filters:
+#      #         branches:
+#      #           only:
+#      #             - master
+#     jobs:
+#       - deuxieme:
+#           filters:
+#             branches:
+#               only:
+#                 - master
       
-  thirdly:
-    jobs:
-      - troisieme
+#   thirdly:
+#     jobs:
+#       - troisieme
